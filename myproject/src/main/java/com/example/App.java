@@ -19,29 +19,40 @@ public class App {
             }
         }
 
-        dropRandomShape(board);
+        // Continuously drop random shapes until the game ends
+        while (true) {
+            if (!dropRandomShape(board)) {
+                break; // Game ends if a shape reaches the top
+            }
+        }
     }
 
-    public static void dropRandomShape(char[][] board) throws InterruptedException {
+    public static boolean dropRandomShape(char[][] board) throws InterruptedException {
         char[][] shape = getRandomShape();
         int x = 5; // Starting X position (column)
         int y = 1; // Starting Y position (row)
 
+        // Check if the shape immediately collides with the top of the board
+        if (!canMoveDown(board, shape, x, y)) {
+            return false; // The game ends if the shape cannot move down
+        }
+
         while (true) {
             if (!canMoveDown(board, shape, x, y)) {
                 placeShape(board, shape, x, y);
-                break; // Stop the board for now
+                break; // Stop the current shape
             }
-            y++;
+            y++; // Move shape down
             printBoard(board, shape, x, y);
             Thread.sleep(500); // Delay for visualization
         }
+        return true; // Shape successfully placed, return true for continuing the game
     }
 
     public static boolean canMoveDown(char[][] board, char[][] shape, int x, int y) {
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[i].length; j++) {
-                if (shape[i][j] != ' ' && board[y + i + 1][x + j] != ' ') {
+                if (shape[i][j] != ' ' && (y + i + 1 >= board.length || board[y + i + 1][x + j] != ' ')) {
                     return false;
                 }
             }
