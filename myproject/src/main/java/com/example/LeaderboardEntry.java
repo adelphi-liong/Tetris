@@ -1,8 +1,6 @@
 package com.example;
 
-import java.io.Serializable;
-
-public class LeaderboardEntry implements Serializable {
+public class LeaderboardEntry {
     private String name;
     private int score;
 
@@ -17,10 +15,5 @@ public class LeaderboardEntry implements Serializable {
 
     public int getScore() {
         return score;
-    }
-
-    @Override
-    public String toString() {
-        return name + ": " + score;
     }
 }
