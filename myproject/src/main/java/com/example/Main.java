@@ -1,8 +1,18 @@
 package com.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Game game = new Game();
-        game.start();
+        InputHandler inputHandler = new InputHandler();
+        ShapeFactory shapeFactory = new ShapeFactory();
+        Leaderboard leaderboard = new Leaderboard();
+        Board board = new Board(inputHandler, shapeFactory);
+        Game game = new Game(board, leaderboard);
+        Scanner scanner = new Scanner(System.in);
+
+        game.start(scanner);
+
+        scanner.close();
     }
 }

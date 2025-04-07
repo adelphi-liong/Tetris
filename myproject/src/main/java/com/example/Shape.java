@@ -1,12 +1,12 @@
 package com.example;
 
-import java.util.Random;
-
 public class Shape {
-    private char[][] shape;
+    char[][] shape;
+    ShapeFactory factory;
 
-    public Shape(char[][] shape) {
+    public Shape(char[][] shape, ShapeFactory factory) {
         this.shape = shape;
+        this.factory = factory;
     }
 
     public char[][] getShape() {
@@ -21,18 +21,6 @@ public class Shape {
                 rotated[j][rows - 1 - i] = shape[i][j];
             }
         }
-        return new Shape(rotated);
-    }
-
-    public static Shape getRandomShape() {
-        char[][][] shapes = { 
-            {{'O', 'O'}, {'O', 'O'}}, 
-            {{'I'}, {'I'}, {'I'}, {'I'}}, 
-            {{'T', 'T', 'T'}, {' ', 'T', ' '}}, 
-            {{'L', ' '}, {'L', ' '}, {'L', 'L'}}, 
-            {{'S', 'S', ' '}, {' ', 'S', 'S'}}, 
-            {{'Z', 'Z', ' '}, {' ', 'Z', 'Z'}} 
-        };
-        return new Shape(shapes[new Random().nextInt(shapes.length)]);
+        return factory.createShape(rotated);
     }
 }

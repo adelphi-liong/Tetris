@@ -3,46 +3,36 @@ package com.example;
 import java.util.Scanner;
 
 public class Game {
-    private Board board;
-    private Leaderboard leaderboard;
-    private int score;
-    private int level;
-    private boolean gameOver;
+    Board board;
+    Leaderboard leaderboard;
+    ShapeFactory factory;
+    int score;
+    int level;
+    boolean gameOver;
 
-    public Game() {
-        this.board = new Board();
-        this.leaderboard = new Leaderboard();
+    public Game(Board board, Leaderboard leaderboard) {
+        this.board = board;
+        this.leaderboard = leaderboard;
+        this.factory = board.factory;
         this.score = 0;
         this.level = 0;
         this.gameOver = false;
     }
 
-    public void start() throws InterruptedException {
-        // Start the game loop
+    public void start(Scanner scanner) throws InterruptedException {
         while (!gameOver) {
             leaderboard.printLeaderboard();
-            if (!board.dropRandomShape()) {
+            Shape shape = factory.createRandomShape();
+            if (!board.dropRandomShape(shape)) {
                 gameOver = true;
             }
         }
 
-        // Game Over Logic
         System.out.println("Game Over! Enter your name: ");
+        String name = scanner.nextLine();
 
-        // Clear the input buffer (skip any remaining newline characters in the buffer)
-        Scanner scanner = new Scanner(System.in);
-
-        // Wait for user input after game over
-        String name = scanner.nextLine();  // Get the entire name input
-
-        // Add the name and score to leaderboard
-        leaderboard.addEntry(name, score);  
-
-        // Print the final leaderboard
+        leaderboard.addEntry(name, score);
         leaderboard.printLeaderboard();
-
-        // Close the scanner to avoid resource leak
-        scanner.close();
     }
 
     public int getScore() {
