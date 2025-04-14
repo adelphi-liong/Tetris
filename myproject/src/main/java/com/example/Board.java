@@ -2,7 +2,7 @@ package com.example;
 
 public class Board {
     final int WIDTH = 12;
-    final int HEIGHT = 22;
+    final int HEIGHT = 12;
     char[][] board;
     InputHandler inputHandler;
     int score = 0;

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class InputHandler extends Thread {
     volatile int lastKeyPressed = -1;
+    volatile boolean gameEnd = false;
 
     public InputHandler() {
         this.start();
@@ -11,7 +12,7 @@ public class InputHandler extends Thread {
 
     public void run() {
         try {
-            while (true) {
+            while (!gameEnd) {
                 int key = System.in.read();
                 if (key == '4' || key == '6' || key == '5' || key == '8') {
                     lastKeyPressed = key - '0';
