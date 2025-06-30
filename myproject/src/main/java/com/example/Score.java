@@ -1,0 +1,9 @@
+package com.example;
+
+public class Score {
+    public final int points;
+    
+    public Score(int points) {
+        this.points = points;
+    }
+} 
