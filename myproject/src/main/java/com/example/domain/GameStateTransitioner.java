@@ -1,4 +1,6 @@
-package com.example;
+package com.example.domain;
+
+import com.example.common.GameAction;
 
 public class GameStateTransitioner {
     public final PieceMover pieceMover;

@@ -1,6 +1,8 @@
-package com.example;
+package com.example.adapter;
 
 import java.io.IOException;
+import com.example.common.GameAction;
+import com.example.common.InputSource;
 
 public class UserInputReader implements InputSource {
     

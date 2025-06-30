@@ -1,4 +1,4 @@
-package com.example;
+package com.example.domain;
 
 public class BoardDimensions {
     public final int width;

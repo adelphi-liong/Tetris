@@ -1,4 +1,6 @@
-package com.example;
+package com.example.domain;
+
+import com.example.common.GameAction;
 
 public class GameEngine {
     public final GameStateTransitioner gameStateTransitioner;

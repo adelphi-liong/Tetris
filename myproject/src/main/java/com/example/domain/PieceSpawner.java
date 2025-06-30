@@ -1,4 +1,4 @@
-package com.example;
+package com.example.domain;
 
 public class PieceSpawner {
     public final PieceShapeGenerator pieceShapeGenerator;

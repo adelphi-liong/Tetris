@@ -1,4 +1,6 @@
-package com.example;
+package com.example.adapter;
+
+import com.example.domain.*;
 
 public class ConsoleRenderer {
     

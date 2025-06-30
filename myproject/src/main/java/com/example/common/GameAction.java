@@ -1,4 +1,4 @@
-package com.example;
+package com.example.common;
 
 public enum GameAction {
     MOVE_LEFT,

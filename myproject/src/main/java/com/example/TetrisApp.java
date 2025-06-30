@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.domain.*;
+import com.example.adapter.*;
+import com.example.common.*;
+
 public class TetrisApp {
     public static void main(String[] args) {
         // Configuration

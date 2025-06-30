@@ -1,4 +1,7 @@
-package com.example;
+package com.example.adapter;
+
+import com.example.domain.*;
+import com.example.common.*;
 
 public class GameLoop {
     public final GameEngine gameEngine;
